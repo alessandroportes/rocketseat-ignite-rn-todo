@@ -13,7 +13,7 @@ type Props = {
   isComplete: boolean;
 };
 
-export function Task({ id = uuid.v4(), name, isComplete }: Props) {
+export function Task({ id = String(uuid.v4()), name, isComplete }: Props) {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
