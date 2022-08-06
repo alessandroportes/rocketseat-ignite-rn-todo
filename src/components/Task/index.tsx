@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Text, View, TouchableHighlight } from "react-native";
+import uuid from "react-native-uuid";
+import { Text, View } from "react-native";
 import Checkbox from "expo-checkbox";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -7,21 +8,22 @@ import { styles } from "./styles";
 import { Button } from "../Form/Button";
 
 type Props = {
-  title: string;
-  checked: boolean;
+  id?: string;
+  name: string;
+  isComplete: boolean;
 };
 
-export function Task({ title, checked }: Props) {
+export function Task({ id = uuid.v4(), name, isComplete }: Props) {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
     <View style={styles.form}>
       <Checkbox
         style={styles.checkbox}
-        value={isChecked}
+        value={isComplete}
         onValueChange={setIsChecked}
       />
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>{name}</Text>
       <Button
         style={styles.button}
         underlayColor={"#333333"}

@@ -22,16 +22,21 @@ export function Home() {
   function handleTaskOk() {}
 
   const tasks = [
-    "Lorem ipsum dolor sit am et cons e ctetur adipisicing elitvv vvvvv vvvv vv vv vvv vvvvvv",
-    "tarefa",
-    "tarefa2",
-    "tarefa2",
-    "tarefa2",
-    "tarefa2",
-    "tarefa2",
-    "tarefa2",
-    "tarefa2",
-    "tarefa2",
+    {
+      id: "",
+      name: "Lorem ipsum dolor sit am et cons e ctetur adipisicing elitvv vvvvv vvvv vv vv vvv vvvvvv",
+      isComplete: false,
+    },
+    {
+      id: "",
+      name: "Lorem ipsum dolor sit am et cons e ctetur adipisicing",
+      isComplete: false,
+    },
+    {
+      id: "",
+      name: "Lorem ipsum dolor sit am et cons e ctetur adipisicing",
+      isComplete: false,
+    },
   ];
 
   return (
@@ -58,7 +63,8 @@ export function Home() {
 
         <FlatList
           data={tasks}
-          renderItem={({ item }) => <Task title={item} checked={false} />}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <Task name={item.name} isComplete={item.isComplete} />}
           showsHorizontalScrollIndicator={false}
           ListEmptyComponent={() => (
             <View style={styles.listEmptyContainer}>
