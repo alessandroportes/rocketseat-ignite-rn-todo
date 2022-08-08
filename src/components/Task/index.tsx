@@ -10,24 +10,40 @@ import { Button } from "../Form/Button";
 type Props = {
   id?: string;
   name: string;
-  isComplete: boolean;
+  isComplete?: boolean;
+  onRemove: () => void;
+  onComplete: () => void;
 };
 
-export function Task({ id = String(uuid.v4()), name, isComplete }: Props) {
-  const [isChecked, setIsChecked] = useState(false);
-
+export function Task({
+  id = String(uuid.v4()),
+  name,
+  isComplete = false,
+  onRemove,
+  onComplete,
+}: Props) {
   return (
     <View style={styles.form}>
       <Checkbox
         style={styles.checkbox}
         value={isComplete}
-        onValueChange={setIsChecked}
+        onValueChange={onComplete}
       />
-      <Text style={styles.text}>{name}</Text>
+      <Text
+        style={[
+          styles.text,
+          {
+            textDecorationLine: isComplete ? "line-through" : "none",
+            color: isComplete ? "#808080" : "#F2F2F2",
+          },
+        ]}
+      >
+        {name}
+      </Text>
       <Button
         style={styles.button}
         underlayColor={"#333333"}
-        onPress={() => console.log("Click TRASH")}
+        onPress={onRemove}
       >
         <Ionicons name="trash-outline" size={20} color="#808080" />
       </Button>

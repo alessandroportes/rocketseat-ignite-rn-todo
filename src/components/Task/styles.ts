@@ -16,11 +16,11 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+    borderColor: "#4EA8DE",
   },
 
   text: {
     flex: 1,
-    color: "#F2F2F2",
     padding: 8,
     textAlign: "left",
   },
